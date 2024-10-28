@@ -4,24 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Diary {
-    private String username;
+    private String userName;
     private String password;
-    private boolean isLocked;
+    private boolean locked = false;
+    private List<Entry>entries =new ArrayList<>();
 
-    public List<Entry> getEntries() {
-        return entries;
+    public Diary() {
+
     }
-
-    public void setEntries(List<Entry> entries) {
-        this.entries = entries;
-    }
-
-    public boolean isLocked() {
-        return isLocked;
-    }
-
-    public void setLocked(boolean locked) {
-        isLocked = locked;
+    public Diary(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+        entries = new ArrayList<>();
     }
 
     public String getPassword() {
@@ -33,14 +27,35 @@ public class Diary {
     }
 
     public String getUsername() {
-        return username;
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(String userName) {
+        this.userName = userName;
+    }
+
+    public List<Entry> getEntries() {
+        return entries;
+    }
+
+    public void setEntries(List<Entry> entries) {
+        this.entries = entries;
+    }
+
+    public String toString() {
+        return "userName=" + userName;
     }
 
 
 
-    private List<Entry> entries = new ArrayList<>();
+    public void lock() {
+        locked = true;
+    }
+    public void unlock() {
+        locked = false;
+    }
+
+    public boolean isLocked() {
+        return locked;
+    }
 }

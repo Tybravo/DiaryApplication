@@ -5,14 +5,13 @@ import java.util.List;
 
 public interface DiaryRepository {
     Diary save(Diary diary);
-
     List<Diary> findByTitle(String title);
-
     void delete(int id);
-
     void delete(Diary diary);
-
     long count();
+    Diary findById(String username);
 
-    Diary findById();
+    boolean isEmpty();
+
+    Diary findByPass(String password);
 }
