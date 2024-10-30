@@ -9,9 +9,9 @@ public class Diary {
     private boolean locked = false;
     private List<Entry>entries =new ArrayList<>();
 
-    public Diary() {
-
-    }
+//    public Diary() {
+//
+//    }
     public Diary(String userName, String password) {
         this.userName = userName;
         this.password = password;

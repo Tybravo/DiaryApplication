@@ -22,21 +22,21 @@ public class DiaryRepositoryImplTest {
     }
 
     @Test
-    public void test_That_One_New_Entry_Is_Added_To_Repo() {
+    public void test_That_One_New_Diary_Is_Added_To_Repo() {
         assertEquals(0, diaryRepo.count());
-        Diary diary = new Diary("Bravo", "myPassword");
+        Diary diary = new Diary("Bravo", "PasswordOne");
         diaryRepo.save(diary);
         assertEquals(1, diaryRepo.count());
         assertEquals(1, diaryRepo.getSize());
     }
 
     @Test
-    public void test_That_Two_Or_More_New_Entry_Is_Added_To_Repo() {
+    public void test_That_Two_Or_More_New_Diary_Is_Added_To_Repo() {
         assertEquals(0, diaryRepo.count());
-        Diary diary01 = new Diary("TY", "myPassword");
+        Diary diary01 = new Diary("TY", "PasswordOne");
         diaryRepo.save(diary01);
         assertEquals(1, diaryRepo.count());
-        Diary diary02 = new Diary("Bravo", "myPassword");
+        Diary diary02 = new Diary("Bravo", "PasswordTwo");
         diaryRepo.save(diary02);
         assertEquals(2, diaryRepo.count());
         assertEquals(2, diaryRepo.getSize());
@@ -44,7 +44,7 @@ public class DiaryRepositoryImplTest {
 
     @Test
     public void test_That_One_Diary_Can_Be_Removed_From_Repo() {
-        Diary diary = new Diary("TY", "myPassword");
+        Diary diary = new Diary("TY", "PasswordOne");
         diaryRepo.save(diary);
         assertEquals(1, diaryRepo.count());
         diaryRepo.delete(diary);
@@ -54,10 +54,10 @@ public class DiaryRepositoryImplTest {
     @Test
     public void test_That_Two_Diaries_Added_Delete_One_And_Diary_Is_Not_Empty() {
         assertEquals(0, diaryRepo.count());
-        Diary diary01 = new Diary("TY", "myPassword");
+        Diary diary01 = new Diary("TY", "PasswordOne");
         diaryRepo.save(diary01);
         assertEquals(1, diaryRepo.count());
-        Diary diary02 = new Diary("Bravo", "myPassword");
+        Diary diary02 = new Diary("Bravo", "PasswordTwo");
         diaryRepo.save(diary02);
         assertEquals(2, diaryRepo.count());
         diaryRepo.delete(diary02);
@@ -67,7 +67,7 @@ public class DiaryRepositoryImplTest {
 
     @Test
     public void test_That_Diary_Can_Be_Retrieved_From_Repo() {
-        Diary diary = new Diary("TY", "myPassword");
+        Diary diary = new Diary("TY", "PasswordOne");
         diaryRepo.save(diary);
         assertEquals(1, diaryRepo.count());
         assertEquals(1, diaryRepo.getSize());
@@ -77,10 +77,10 @@ public class DiaryRepositoryImplTest {
     @Test
     public void test_To_Search_Entry_By_Id() {
         assertEquals(0, diaryRepo.count());
-        Diary diary = new Diary("Bravo", "myPassword");
+        Diary diary = new Diary("Bravo", "PasswordOne");
         diaryRepo.save(diary);
         assertEquals(1, diaryRepo.count());
-        Diary diary2 = new Diary("Adetayo", "myPassword2");
+        Diary diary2 = new Diary("Adetayo", "PasswordTwo");
         diaryRepo.save(diary2);
         assertEquals(2, diaryRepo.count());
         Diary fetchedUsername = diaryRepo.findById("Bravo");
@@ -90,7 +90,7 @@ public class DiaryRepositoryImplTest {
     @Test
     public void test_To_Delete_Existing_Repository_Diary(){
         assertEquals(0, diaryRepo.count());
-        Diary diary = new Diary("Bravo", "myPassword");
+        Diary diary = new Diary("Bravo", "PasswordOne");
         diaryRepo.save(diary);
         assertEquals(1, diaryRepo.getSize());
         diaryRepo.delete(diary);

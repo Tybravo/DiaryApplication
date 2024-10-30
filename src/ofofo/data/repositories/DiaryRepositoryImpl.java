@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DiaryRepositoryImpl implements DiaryRepository {
-    private List<Diary> diaries = new ArrayList<>();
+    private final List<Diary> diaries;
     private long count = 0;
 
 

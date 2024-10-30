@@ -19,7 +19,7 @@ public class DiaryServiceImpl implements DiaryService {
         if (checkedUsername != null) {
             throw new IllegalArgumentException("Username is already taken");
         } else {
-            Diary diary = new Diary();
+            Diary diary = new Diary(username, password);
             diary.setUsername(username.toLowerCase());
             diary.setPassword(password.toLowerCase());
             diaryRepository.save(diary);
@@ -57,6 +57,7 @@ public class DiaryServiceImpl implements DiaryService {
         }
         return null;
     }
+
 
     @Override
     public Diary findByPass(String password) {

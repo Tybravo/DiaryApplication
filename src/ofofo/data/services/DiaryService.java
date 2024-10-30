@@ -15,7 +15,6 @@ public interface DiaryService {
     String getUsername();
 
     boolean isLocked();
-
     void lock();
     void unLock();
 

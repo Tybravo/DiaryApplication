@@ -25,23 +25,23 @@ public class DiaryServiceImplTest {
 
     @Test
     public void test_To_Register_New_Member_User_Count_Is_One(){
-        diaryService.register("Tybravo", "newPassword");
+        diaryService.register("Tybravo", "bravoPassword");
         assertEquals(1, diaryService.count());
     }
 
     @Test
     public void test_To_Register_New_User_Twice_User_Disallowed_And_Count_Is_Still_One() {
-        diaryService.register("Tybravo", "newPassword");
+        diaryService.register("Tybravo", "bravoPassword");
         assertEquals(1, diaryService.count());
-        assertThrows(IllegalArgumentException.class, () -> diaryService.register("Tybravo", "newPassword"));
+        assertThrows(IllegalArgumentException.class, () -> diaryService.register("Tybravo", "bravoPassword"));
         assertEquals(1, diaryService.count());
     }
 
     @Test
     public void test_That_User_Login_With_Wrong_Username_And_Disallow_User_To_Enter_Password() {
-        diaryService.register("Tybravo", "newPassword");
+        diaryService.register("Tybravo", "bravoPassword");
         assertEquals(1, diaryService.count());
-        assertThrows(IllegalArgumentException.class, () -> diaryService.loginUsername("Johdan"));
+        assertThrows(IllegalArgumentException.class, () -> diaryService.loginUsername("Michael"));
         assertEquals(1, diaryService.count());
     }
 
