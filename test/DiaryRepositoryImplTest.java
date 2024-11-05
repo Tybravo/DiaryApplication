@@ -13,6 +13,7 @@ public class DiaryRepositoryImplTest {
     @BeforeEach
     public void setUp() {
         diaryRepo = new DiaryRepositoryImpl();
+        diaryRepo.deleteAll();
     }
 
     @Test
@@ -88,14 +89,30 @@ public class DiaryRepositoryImplTest {
     }
 
     @Test
-    public void test_To_Delete_Existing_Repository_Diary(){
+    public void test_To_Delete_One_Diary_Record_In_Repository(){
         assertEquals(0, diaryRepo.count());
-        Diary diary = new Diary("Bravo", "PasswordOne");
-        diaryRepo.save(diary);
+        Diary diary01 = new Diary("Bravo", "PasswordOne");
+        diaryRepo.save(diary01);
+        Diary diary02 = new Diary("Bravo", "PasswordOne");
+        diaryRepo.save(diary02);
+        assertEquals(2, diaryRepo.getSize());
+        diaryRepo.delete(diary02);
+        assertEquals(1, diaryRepo.count());
         assertEquals(1, diaryRepo.getSize());
-        diaryRepo.delete(diary);
+    }
+
+    @Test
+    public void test_To_Delete_All_Diary_Records_In_Repository(){
         assertEquals(0, diaryRepo.count());
-        assertEquals(0, diaryRepo.getSize());
+        Diary diary01 = new Diary("Bravo", "PasswordOne");
+        diaryRepo.save(diary01);
+        Diary diary02 = new Diary("Mikolo", "PasswordTwo");
+        diaryRepo.save(diary02);
+        Diary diary03 = new Diary("Bravo", "PasswordThree");
+        diaryRepo.save(diary03);
+        assertEquals(3, diaryRepo.getSize());
+        diaryRepo.deleteAllById("Bravo");
+        assertEquals(0, diaryRepo.count());
     }
 
 }

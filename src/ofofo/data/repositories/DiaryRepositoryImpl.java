@@ -3,10 +3,12 @@ package ofofo.data.repositories;
 import ofofo.data.models.Diary;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class DiaryRepositoryImpl implements DiaryRepository {
     private final List<Diary> diaries;
+    private  DiaryRepositoryImpl diaryRepository;
     private long count = 0;
 
 
@@ -16,10 +18,9 @@ public class DiaryRepositoryImpl implements DiaryRepository {
 
 
     @Override
-    public Diary save(Diary diary) {
+    public void save(Diary diary) {
         diaries.add(diary);
         count++;
-        return null;
     }
 
     @Override
@@ -28,8 +29,23 @@ public class DiaryRepositoryImpl implements DiaryRepository {
     }
 
     @Override
-    public void delete(int id) {
+    public void deleteAll() {
+    }
 
+    @Override
+    public void deleteAllById(String username) {
+        Iterator<Diary> iterator = diaries.iterator();
+        while (iterator.hasNext()) {
+            Diary diary = iterator.next();
+            count--;
+            if (username.equals(diary.getUsername())) {
+                iterator.remove();
+            }
+            }
+    }
+
+    private Iterator<Diary> iterator() {
+        return diaries.iterator();
     }
 
     @Override
@@ -66,6 +82,7 @@ public class DiaryRepositoryImpl implements DiaryRepository {
         }
         return null;
     }
+
 
     @Override
     public boolean isEmpty() {
