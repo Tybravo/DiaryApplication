@@ -11,9 +11,7 @@ public interface DiaryRepository {
     boolean isEmpty();
     Diary findByPass(String password);
     List<Diary> findByTitle(String title);
-
-
-
+    
     void deleteAll();
     void deleteAllById(String username);
     //void deleteById(String id);

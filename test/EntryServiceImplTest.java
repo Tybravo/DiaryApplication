@@ -94,13 +94,16 @@ public class EntryServiceImplTest {
         Entry entry1 = new Entry("Tybravo","Read Books","Enjoyed a beautiful moment today");
         Entry entry2 = new Entry("Tybravo","Play Music","Enjoyed a beautiful moment today");
         Entry entry3 = new Entry("Tybravo","Window Shopping","Enjoyed a beautiful moment today");
+        Entry entry4 = new Entry("Tybravo","Watching Movie","Enjoyed a beautiful moment today");
         entryService.saveEntryWithDiaryId("Tybravo","Read Books","Enjoyed a beautiful moment today");
         entryService.saveEntryWithDiaryId("Tybravo","Play Music","Enjoyed a beautiful moment today");
         entryService.saveEntryWithDiaryId("Tybravo","Window Shopping","Enjoyed a beautiful moment today");
+        entryService.saveEntryWithDiaryId("Tybravo","Watching Movie","Enjoyed a beautiful moment today");
 
         entryService.delete(entry1);
         entryService.delete(entry2);
         entryService.delete(entry3);
+        entryService.delete(entry4);
         assertEquals(0, entryService.count());
     }
 
